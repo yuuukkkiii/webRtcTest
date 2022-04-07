@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+<!--        <variable-->
+<!--            name="ip"-->
+<!--            type="String" />-->
+<!--        <variable-->
+<!--            name="port"-->
+<!--            type="String" />-->
+<!--        <variable-->
+<!--            name="name"-->
+<!--            type="String" />-->
+<!--        <variable-->
+<!--            name="password"-->
+<!--            type="String" />-->
+<!--        <variable-->
+<!--            name="called"-->
+<!--            type="String" />-->
+        <variable
+            name="user"
+            type="com.example.webrtctest.bean.UserInfo" />
+        <variable
+            name="handlers"
+            type="com.example.webrtctest.handlers.MainHandler" />
+        <import type="java.util.ArrayList"/>
+        <variable
+            name="a"
+            type="ArrayList&lt;String>" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.MainActivity">
+
+        <TextView
+            android:id="@+id/ipText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ipText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/ip"
+            app:layout_constraintRight_toLeftOf="@+id/ip"
+            app:layout_constraintBottom_toTopOf="@+id/portText" />
+
+        <EditText
+            android:id="@+id/ip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/ipEdit"
+            android:minWidth="@dimen/inputMin"
+            android:text="@={user.ip}"
+            android:inputType="text"
+            android:textSize="@dimen/inputSize"
+            app:layout_constraintBottom_toTopOf="@+id/port"
+            app:layout_constraintLeft_toRightOf="@+id/ipText"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/portText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/portText"
+            app:layout_constraintTop_toBottomOf="@+id/ipText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/port"
+            app:layout_constraintRight_toLeftOf="@+id/port"
+            app:layout_constraintBottom_toTopOf="@+id/nameText" />
+
+        <EditText
+            android:id="@+id/port"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/portEdit"
+            android:textSize="@dimen/inputSize"
+            android:inputType="text"
+            android:text="@={user.port}"
+            app:layout_constraintTop_toBottomOf="@+id/ip"
+            app:layout_constraintLeft_toRightOf="@+id/portText"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/name"
+            android:minWidth="@dimen/inputMin" />
+
+        <TextView
+            android:id="@+id/nameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nameText"
+            app:layout_constraintTop_toBottomOf="@+id/portText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/name"
+            app:layout_constraintRight_toLeftOf="@+id/name"
+            app:layout_constraintBottom_toTopOf="@+id/passwordText" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/nameEdit"
+            android:textSize="@dimen/inputSize"
+            android:inputType="text"
+            android:text="@={user.name}"
+            app:layout_constraintTop_toBottomOf="@+id/port"
+            app:layout_constraintLeft_toRightOf="@+id/nameText"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/password"
+            android:minWidth="@dimen/inputMin" />
+
+        <TextView
+            android:id="@+id/passwordText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/passwordText"
+            app:layout_constraintTop_toBottomOf="@+id/nameText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/password"
+            app:layout_constraintRight_toLeftOf="@+id/password"
+            app:layout_constraintBottom_toTopOf="@+id/calledText" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/passwordEdit"
+            android:textSize="@dimen/inputSize"
+            android:inputType="text"
+            android:text="@={user.password}"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            app:layout_constraintLeft_toRightOf="@+id/passwordText"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/called"
+            android:minWidth="@dimen/inputMin" />
+
+        <TextView
+            android:id="@+id/calledText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calledText"
+            app:layout_constraintTop_toBottomOf="@+id/passwordText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/called"
+            app:layout_constraintRight_toLeftOf="@+id/called"
+            app:layout_constraintBottom_toTopOf="@+id/line1" />
+
+        <EditText
+            android:id="@+id/called"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/calledEdit"
+            android:textSize="@dimen/inputSize"
+            android:minWidth="@dimen/inputMin"
+            android:inputType="text"
+            android:text="@={user.called}"
+            app:layout_constraintTop_toBottomOf="@+id/password"
+            app:layout_constraintLeft_toRightOf="@+id/calledText"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/line1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <Button
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register"
+            android:onClick="@{(thisView)->handlers.onRegisterClick(thisView,user)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/calling"
+            app:layout_constraintTop_toBottomOf="@id/line1"
+            app:layout_goneMarginTop="@dimen/buttonMargin" />
+
+        <Button
+            android:id="@+id/calling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calling"
+            android:onClick="@{(thisView)->handlers.onRegisterClick(thisView,user)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line1"
+            app:layout_constraintLeft_toRightOf="@+id/register"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_goneMarginTop="@dimen/buttonMargin" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

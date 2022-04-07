@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">WebRTCTest</string>
+
+    <string name="ipText">IP地址</string>
+    <string name="ipEdit">SIP服务器IP地址</string>
+
+    <string name="portText">端口号</string>
+    <string name="portEdit">SIP服务器端口号</string>
+
+    <string name="nameEdit">自定义用户名</string>
+    <string name="nameText">用户名</string>
+
+    <string name="passwordEdit">密码</string>
+    <string name="passwordText">密码</string>
+
+    <string name="calledEdit">被呼叫的用户名</string>
+    <string name="calledText">呼叫名</string>
+
+    <string name="register">注册</string>
+    <string name="calling">呼叫</string>
+</resources>
